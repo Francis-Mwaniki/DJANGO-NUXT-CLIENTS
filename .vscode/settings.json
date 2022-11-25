@@ -1,0 +1,15 @@
+{
+    "cSpell.words": [
+        "daisyui",
+        "Josefin",
+        "Lato",
+        "Nuxt",
+        "nuxtjs",
+        "Raleway",
+        "Roboto",
+        "Supabase",
+        "tailwindcss",
+        "wght"
+    ],
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": true
+}

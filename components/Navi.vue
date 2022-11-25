@@ -1,0 +1,185 @@
+<template>
+  <nav class="w-full flex flex-wrap items-center justify-between">
+    <div class="mx-auto w-full flex flex-wrap items-center justify-between">
+      <div
+        class="w-full flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+      >
+        <button
+          class="cursor-pointer text-white text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+          type="button"
+          @click="toggleNavbar"
+        >
+          <Icon
+            name="uil:dashboard"
+            class="h-10 w-10 rounded-full ml-3 text-white p-1 bg-pink-600"
+            v-if="!showMenu"
+            data-tip="Home"
+          />
+          <Icon
+            name="uil:arrow-left"
+            class="h-10 w-10 rounded-full ml-3 text-white p-1 bg-pink-600"
+            v-else
+          />
+        </button>
+      </div>
+      <div
+        class="lg:flex flex-grow items-center lg:shadow-none btn-primary"
+        v-bind:class="{ hidden: !showMenu, block: showMenu }"
+      >
+        <ul class="md:flex flex-col lg:flex-row list-none mr-auto hidden">
+          <li class="md:flex items-center hidden">
+            <nuxt-link to="/">
+              <button
+                class="cursor-pointer tooltip tooltip-bottom tooltip-secondary"
+                data-tip="Home"
+                type="button"
+              >
+                <Icon
+                  name="uil:dashboard"
+                  class="h-10 w-10 rounded-full ml-3 p-1"
+                /></button
+            ></nuxt-link>
+          </li>
+        </ul>
+        <!-- <ul class="flex flex-row lg:flex-row list-none lg:ml-auto p-1">
+          <li class="flex items-center">
+            <a
+              href="https://www.linkedin.com/in/francis-mwaniki-378603220"
+              class="tooltip tooltip-bottom tooltip-secondary"
+              data-tip="Linkedln"
+            >
+              <Icon name="uil:linkedin" class="h-10 w-10 rounded-full ml-3" />
+            </a>
+          </li>
+
+          <li class="flex items-center">
+            <a
+              href="https://mobile.twitter.com/notifications"
+              class="tooltip tooltip-bottom tooltip-secondary"
+              data-tip="Twitter"
+            >
+              <Icon name="uil:twitter" class="h-10 w-10 rounded-full ml-3"
+            /></a>
+          </li>
+          <li class="flex items-center">
+            <a
+              href="https://github.com/Francis-Mwaniki"
+              class="tooltip tooltip-bottom tooltip-secondary"
+              data-tip="Github"
+            >
+              <Icon name="uil:github" class="h-10 w-10 rounded-full ml-3"
+            /></a>
+          </li>
+        </ul> -->
+        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+          <li class="flex items-center">
+            <button
+              class="text-xs tooltip tooltip-bottom tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+              type="button"
+              style="transition: all 0.15s ease 0s"
+              data-tip="Downloads"
+            >
+              <nuxt-link to="/Downloads" class="">
+                <label for="my-modal-3 " class="">Download</label>
+              </nuxt-link>
+            </button>
+          </li>
+
+          <li class="flex items-center">
+            <div class="p-4 flex justify-end items-end gap-4">
+              <button class="btn btn-accent md:flex hidden">Theme</button>
+              <select
+                class="select w-60 text-black bg-white"
+                v-model="colorMode.preference"
+              >
+                <option disabled selected>Theme</option>
+                <option v-for="theme of themes" :key="theme">{{ theme }}</option>
+              </select>
+            </div>
+          </li>
+          <li class="flex items-center">
+            <nuxt-link to="/Login" class="">
+              <button
+                class="text-xs tooltip tooltip-bottom tooltip-secondary font-bold uppercase px-4 btn btn-primary mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                type="button"
+                style="transition: all 0.15s ease 0s"
+                data-tip="login"
+              >
+                <label for="my-modal-3 " class="">login</label>
+
+                <Icon name="uil:signout" class="h-10 w-10 rounded-full ml-3" />
+              </button>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <!-- Put this part before </body> tag -->
+    </div>
+  </nav>
+</template>
+<script setup>
+const colorMode = useColorMode();
+const showMenu = ref(false);
+const themes = [
+  "system",
+  "light",
+  "dark",
+  "cupcake",
+  "bumblebee",
+  "emerald",
+  "corporate",
+  "synthwave",
+  "retro",
+  "cyberpunk",
+  "valentine",
+  "halloween",
+  "garden",
+  "forest",
+  "aqua",
+  "lofi",
+  "pastel",
+  "fantasy",
+  "wireframe",
+  "black",
+  "luxury",
+  "dracula",
+  "cmyk",
+  "autumn",
+  "business",
+  "acid",
+  "lemonade",
+  "night",
+  "coffee",
+  "winter",
+];
+const webs = [
+  {
+    web: "Python",
+    link:
+      "https://drive.google.com/file/d/1JvqM1xYiryK70VuFPR8O30v8QcPJWBGK/view?usp=share_link",
+  },
+  {
+    web: "Javascript",
+    link:
+      "https://drive.google.com/file/d/1NwXYVvnyO_vSu8-7X83znaqHquCcdNe-/view?usp=share_link",
+  },
+  {
+    web: "Algorithm",
+    link:
+      "https://drive.google.com/file/d/18eKhGjlrVKdvJzRDYqtLOdvB5xlKDuy4/view?usp=sharing",
+  },
+  {
+    web: "Social Tools",
+    link:
+      "https://drive.google.com/file/d/1QVeg7FiTwgJmdvmE10KsiwVtadMfuPzP/view?usp=sharing",
+  },
+  {
+    web: "LuxuryFonts",
+    link:
+      "https://drive.google.com/file/d/1jvXfgYebgjZmFv6tdBr4GRvOREfSbsWJ/view?usp=sharing",
+  },
+];
+const toggleNavbar = () => {
+  showMenu.value = !showMenu.value;
+};
+</script>
