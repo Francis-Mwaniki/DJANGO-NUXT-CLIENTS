@@ -1,9 +1,6 @@
 <template>
   <main>
-    <Heros />
     <SubRecipes :recipes="recipes" pending="pending" />
-    <MidHero />
-    <Contact />
   </main>
 </template>
 
@@ -18,7 +15,7 @@ export default {
   },
   methods: {
     async fetchAllRecipes() {
-      let url = "http://localhost:8000/api/v1/";
+      let url = "http://localhost:8000/api/v1/recipes/";
       let data = await fetch(url, {
         method: "GET",
       });

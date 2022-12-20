@@ -30,7 +30,7 @@
           <li class="md:flex items-center hidden">
             <nuxt-link to="/">
               <button
-                class="cursor-pointer tooltip tooltip-bottom tooltip-secondary"
+                class="cursor-pointer tooltip tooltip-right tooltip-secondary"
                 data-tip="Home"
                 type="button"
               >
@@ -72,24 +72,11 @@
           </li>
         </ul> -->
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-          <!-- <li class="flex items-center">
-            <button
-              class="text-xs tooltip tooltip-bottom tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-              type="button"
-              style="transition: all 0.15s ease 0s"
-              data-tip="Downloads"
-            >
-              <nuxt-link to="/Downloads" class="">
-                <label for="my-modal-3 " class="">Download</label>
-              </nuxt-link>
-            </button>
-          </li> -->
-
           <li class="flex items-center">
             <div class="p-4 flex justify-end items-end gap-4">
-              <button class="btn btn-accent md:flex hidden">Theme</button>
+              <button class="btn btn-accent md:flex hidden">change theme</button>
               <select
-                class="select w-60 text-black bg-white"
+                class="select w-60 text-blue-300 bg-slate-900"
                 v-model="colorMode.preference"
               >
                 <option disabled selected>Theme</option>
@@ -97,19 +84,66 @@
               </select>
             </div>
           </li>
-          <li class="flex items-center">
+
+          <li class="flex items-center justify-center mx-auto gap-x-2">
+            <NuxtLink to="/Search">
+              <button class="btn btn-square ring-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+            </NuxtLink>
+            <button
+              class="text-xs tooltip tooltip-left tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mx-auto mb-3 flex justify-center items-center"
+              type="button"
+              style="transition: all 0.15s ease 0s"
+              data-tip="recipes"
+            >
+              <nuxt-link to="/Recipes" class="">
+                <label for="my-modal-3 " class=""
+                  >All Recipes<Icon
+                    name="uil:smile"
+                    class="h-10 w-7 flex justify-center items-center mx-auto rounded-full ml-3"
+                /></label>
+              </nuxt-link>
+            </button>
             <nuxt-link to="/Login" class="">
               <button
-                class="text-xs tooltip tooltip-bottom tooltip-secondary font-bold uppercase px-4 btn btn-primary mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                class="text-xs tooltip tooltip-left tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-3 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 type="button"
                 style="transition: all 0.15s ease 0s"
                 data-tip="login"
               >
                 <label for="my-modal-3 " class="">login</label>
 
-                <Icon name="uil:signout" class="h-10 w-10 rounded-full ml-3" />
+                <Icon name="uil:signout" class="h-10 w-10 rounded-full p-2" />
               </button>
             </nuxt-link>
+            <button
+              class="text-xs tooltip tooltip-right tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mx-auto mb-3 flex justify-center items-center sm:hidden"
+              type="button"
+              style="transition: all 0.15s ease 0s"
+              data-tip="Home"
+            >
+              <nuxt-link to="/" class="">
+                <label for="my-modal-3 " class=""
+                  ><Icon
+                    name="uil:home"
+                    class="h-10 w-7 flex justify-center items-center mx-auto rounded-full ml-3"
+                /></label>
+              </nuxt-link>
+            </button>
           </li>
         </ul>
       </div>
