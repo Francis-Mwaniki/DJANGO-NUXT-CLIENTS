@@ -72,7 +72,7 @@
           </li>
         </ul> -->
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-          <li class="flex items-center">
+          <!-- <li class="flex items-center">
             <button
               class="text-xs tooltip tooltip-bottom tooltip-secondary font-bold uppercase px-4 btn btn-accent mt-1 md:mt-0 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
               type="button"
@@ -83,7 +83,7 @@
                 <label for="my-modal-3 " class="">Download</label>
               </nuxt-link>
             </button>
-          </li>
+          </li> -->
 
           <li class="flex items-center">
             <div class="p-4 flex justify-end items-end gap-4">

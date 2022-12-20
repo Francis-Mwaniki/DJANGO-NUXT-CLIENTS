@@ -84,7 +84,7 @@ const email = ref("");
 const client = useSupabaseClient();
 const router = useRouter();
 const signInWithEmail = async () => {
-  const { data, error } = await client.auth.signUp({
+  /*   const { data, error } = await client.auth.signUp({
     email: email.value,
     password: password.value,
   });
@@ -92,7 +92,7 @@ const signInWithEmail = async () => {
     console.log(error);
   }
   router.push("/Login");
-  console.log(data);
+  console.log(data); */
 };
 </script>
 

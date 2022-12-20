@@ -85,7 +85,7 @@ const email = ref("");
 const client = useSupabaseClient();
 const router = useRouter();
 const signInWithEmail = async () => {
-  const { data, error } = await client.auth.signInWithPassword({
+  /*  const { data, error } = await client.auth.signInWithPassword({
     email: email.value,
     password: password.value,
   });
@@ -96,7 +96,7 @@ const signInWithEmail = async () => {
     setTimeout(() => {
       router.push("/Downloads");
     }, 2000);
-  }
+  } */
 };
 </script>
 
