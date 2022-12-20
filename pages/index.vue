@@ -46,7 +46,7 @@
                 <li class="m-1">
                   <a
                     class="inline-flex text-center py-1 px-3 rounded-full transition duration-150 ease-in-out"
-                    >Recipe</a
+                    >{{ recipe.host }}</a
                   >
                 </li>
               </ul>
@@ -55,9 +55,15 @@
               <a class="transition duration-150 ease-in-out">{{ recipe.recipeName }}</a>
             </h3>
           </div>
-          <p class="text-lg flex-grow">
-            {{ recipe.description }}
-          </p>
+          <p class="text-lg flex-grow">"{{ recipe.description }}"</p>
+          <div class="chat chat-end">
+            <div class="chat-bubble chat-bubble">
+              <p class="text-lg flex-grow p-1 italic">
+                {{ recipe.quote }}
+              </p>
+            </div>
+          </div>
+
           <div class="flex items-center mt-4">
             <a>
               <img
@@ -73,7 +79,7 @@
                 recipe.cookName
               }}</a>
               <span class=""> - </span>
-              <span class="">Jan 19, 2020</span>
+              <span class="">{{ recipe.date_added }}</span>
             </div>
           </div>
         </div>
@@ -87,6 +93,7 @@ export default {
   data() {
     return {
       recipes: [],
+      newRecipe: [],
     };
   },
   methods: {
@@ -101,10 +108,17 @@ export default {
       console.log(res);
       console.log(this.recipes);
     },
+    formattedDate(time) {
+      const date = new Date(time);
+      date.toLocaleDateString();
+      this.recipes.push(date);
+      console.log(this.recipes);
+    },
   },
   mounted() {
     this.fetchAllRecipes();
   },
+  computed: {},
 };
 </script>
 
