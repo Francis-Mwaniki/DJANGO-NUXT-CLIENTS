@@ -1,16 +1,16 @@
 <template>
   <main>
     <div class="form-control flex justify-end items-end mr-1 p-2">
-      <div class="input-group">
+      <form class="input-group" @submit.prevent="performSearch">
         <input
           type="text"
           name="query"
-          v-model="q"
+          v-model="query"
           placeholder="Search…"
           class="input input-bordered ring-2 rounded"
         />
 
-        <button class="btn btn-square ring-2" @click="performSearch">
+        <button type="submit" class="btn btn-square ring-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -26,24 +26,24 @@
             />
           </svg>
         </button>
-      </div>
+      </form>
     </div>
     <div class="flex justify-center items-center mx-auto">
       <div class="">
         <div class="flex justify-center items-center mx-auto flex-row">
           <h1 class="flex justify-start items-start mx-auto">Search</h1>
 
-          <h2 class="is-size-5 has-text-grey">Search term: "{{ q }}"</h2>
+          <h2 class="is-size-5 has-text-grey">Search term: "{{ query }}"</h2>
         </div>
-
-        <SubRecipes :recipes="recipes" />
+        <div v-show="recipes">
+          <SubRecipes :recipes="recipes" />
+        </div>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "Search",
   components: {},
@@ -51,31 +51,25 @@ export default {
     return {
       recipes: [],
       query: "",
-      q: "",
+      msg: "",
     };
   },
   mounted() {
-    let uri = window.location.search.substring(1);
-    let params = new URLSearchParams(uri);
-
-    if (params.get("query")) {
-      this.query = params.get("query");
-
-      this.performSearch();
-    }
+    this.filteredResults();
   },
   methods: {
     async performSearch() {
-      await axios
-        .post("http://localhost:8000/api/v1/search/", { query: this.query })
-        .then((response) => {
-          this.recipes = response.data;
-          console.log(this.recipes, response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      let url = "http://localhost:8000/api/v1/search/";
+      let data = await fetch(url, {
+        method: "GET",
+      });
+      let res = await data.json();
+      this.recipes.push(res);
+      console.log("----data------");
+      console.log(res);
+      console.log(this.recipes);
     },
   },
+  computed: {},
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <main>
     <Heros />
-    <SubRecipes :recipes="recipes" pending="pending" />
+    <SubRecipes :recipes="recipes" />
     <MidHero />
     <Contact />
   </main>
@@ -24,17 +24,14 @@ export default {
       });
       let res = await data.json();
       this.recipes.push(res);
-      console.log("----data------");
-      console.log(res);
-      console.log(this.recipes);
     },
     formattedDate(time) {
       const date = new Date(time);
       date.toLocaleDateString();
       this.recipes.push(date);
-      console.log(this.recipes);
     },
   },
+
   mounted() {
     this.fetchAllRecipes();
   },
