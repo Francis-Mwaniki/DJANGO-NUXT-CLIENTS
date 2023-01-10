@@ -1,15 +1,12 @@
 <template>
   <main>
-    <div v-for="customer in customers[0]" :key="customer.id">
+    <div>
       <div
         class="flex justify-center items-center flex-col mx-auto gap-y-3 bg-slate-800 rounded max-w-md ring-2"
       >
         <div class="">
-          <h3 class="">{{ customer.customername }}</h3>
-          <p>{{ customer.comments }}</p>
-          <button class="btn btn-accent" @click="formattedCustomers(customer.id)">
-            Navigate
-          </button>
+          <h3 class="">{{ res.recipeName }}</h3>
+          <p>{{ res.description }}</p>
         </div>
       </div>
     </div>
@@ -18,6 +15,7 @@
 
 <script>
 export default {
+  props: ["res"],
   data() {
     return {
       customers: [],

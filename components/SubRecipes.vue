@@ -1,6 +1,7 @@
 <template>
   <main>
-    <Popup />
+    <test :res="res" v-show="tested" />
+
     <section class="flex flex-col justify-center antialiased">
       <span class="pt-3">
         <h1
@@ -64,10 +65,12 @@
             </div>
             <p class="text-lg flex-grow">"{{ recipe.description }}"</p>
             <div class="flex justify-center items-center mx-auto my-2">
-              <button class="btn btn-accent" @click="formattedRecipes(recipe.id)">
-                <Icon name="uil:eye" class="h-10 w-7 rounded-full" />
-                <label for="my-modal-3" class=""><span>View Details</span></label>
-              </button>
+              <Nuxt-link :to="linkTo">
+                <button class="btn btn-accent" @click="formattedRecipes(recipe.id)">
+                  <Icon name="uil:eye" class="h-10 w-7 rounded-full" />
+                  <label for="my-modal-3" class=""><span>View Details</span></label>
+                </button>
+              </Nuxt-link>
             </div>
             <div class="chat chat-end">
               <div class="chat-bubble chat-bubble">
@@ -104,8 +107,6 @@
 </template>
 
 <script>
-import Popup from "@/components/Popup.vue";
-
 export default {
   props: ["recipes"],
   data() {
@@ -114,21 +115,27 @@ export default {
     };
   },
   setup(props) {
+    let tested = false;
+    let linkTo = "/test";
     let newRecipe = [];
     let res = "";
     let filteredRecipes = [];
     newRecipe = props.recipes;
     let formattedRecipes = (id) => {
+      tested = true;
       let data = newRecipe[0].filter((i) => {
         return i.id === id;
       });
       filteredRecipes.values = [...data];
       res = filteredRecipes.values[0];
+      console.log(res.description);
     };
     return {
       formattedRecipes,
       filteredRecipes,
       res,
+      linkTo,
+      tested,
     };
   },
   computed: {
@@ -137,7 +144,7 @@ export default {
       return this.results;
     },
   },
-  components: { Popup },
+  components: {},
 };
 </script>
 
